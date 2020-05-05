@@ -1,0 +1,70 @@
+.hero {
+    background: url(../images/content/Mountain Baloon.jpg) center center / cover no-repeat;
+    height: 100vh;
+}
+
+.hero__container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.hero__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero__logo {
+    @include sans(extrabold);
+    color: dark;
+    font-size: 36px;
+}
+  
+.hero__menu {
+    margin: 0 20px;
+}
+  
+.hero__header {
+    padding-top: 40px;
+}
+  
+.hero__content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.user-info__desc {
+    @include sans(semibold);
+    color: lightdark;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+.user-info__username {
+    @include sans(extrabold);
+    color: dark;
+    font-size: 72px;
+    line-height: 0.9;
+}
+  
+.hero__btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.scroll__down-btns {
+    @include sans(semibold);
+    color: lightdark;
+    font-size: 18px;
+}
+
+.scroll__down-icon {
+    width: 30px;
+    height: 30px;
+}

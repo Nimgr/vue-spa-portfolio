@@ -9,7 +9,229 @@ html(lang="en")
     title Portfolio | main page
   body
     .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+      .welcome-section
+        section.hero
+          .container.hero__container
+            header.header.hero__header
+              .hero__logo
+                .logo ИН
+
+              .hero__links
+                nav.nav
+                  - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
+                  ul.nav__list
+                    each item in menu
+                      li.nav__item
+                        a(href='').nav__link #{item}
+
+              .hero__menu
+                - var icons = ['insta', 'vk', 'github']
+                ul.socials
+                  each item, index in icons
+                    li.socials__item(class=`${index === 1 ? 'active' : ''}`)
+                      a(href='#').socials__link
+                        +icon(`${item}`, 'socials__icon')
+              
+            .hero__content
+              .user-info
+                h1.user-info__desc Личный сайт<br>веб разработчика
+                .user-info__username Игорь<br>Немгиров
+
+            .hero__btns
+              .scroll-down-btns(href='#') Скролл
+              +icon('scroll', 'scroll__down-icon')
+
+        section.about
+          .container.about__container
+            .about__left
+              .user
+                .avatar.user__avatar
+                  +image('content/Aigor.jpg', 'avatar__pic')
+                ul.user__desc
+                  -
+                    var items = [
+                      ['Проживаю:', 'Москва'],
+                      ['Возраст:', '58'],
+                      ['Родился:', '7 августа 1961']
+                    ]
+                  each item in items
+                    li.user__desc-item
+                      .user__key #{item[0]}
+                      .user__value #{item[1]}
+            .about__right
+                h4.about__prolog Привет, меня зовут
+                h2.about__title Игорь Немгиров
+                .about__text Я занимаюсь разработкой современных сайтов и приложений.<br>Мне нравится делать интересные и современные проекты.
+                .about__ps Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво!                  
+        
+        .triangles
+          svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(points="0,0 0,100 1000,100")
+          svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(points="0,100 1000,100 1000,0")
+        
+        section.values
+          .container.values__container
+            .values__image
+              +image('content/backpack.jpg', 'backpack__pic')
+            .values__title
+              h2.section-title.values__title-text Чем я могу быть полезен вам
+              .values__desc
+              p.values__desc-text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво!
+              
+              ul.user-skills
+                //- .input
+                //-   input(type="text").input__elem
+                //-   .input__icon
+
+                - 
+                  var skills = [
+                    ['Front-end', ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js']],
+                    ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']],
+                  ]
+                each item in skills 
+                  li.user-skills__item.skills-row 
+                    h3.skills-row__title #{item[0]}
+                    ul.skills-row__list
+                      each skill in item[1]
+                        li.skills-row__item
+                          .skill
+                            svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
+                              circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--under
+                              //- circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--above
+                              linear-gradient()
+                            .skill__title #{skill}
+                    
+      .works
+        h2.section-title Мои работы
+        .works__left
+          .slider
+            img().slider__fillpic
+            .slider__preview
+              ul.previews
+                - for (var i = 0; i < 3; i++)
+                  li.previews__item
+                    img.previews__pic
+            .slider__buttons
+              .slider-button
+                button.slider-buttons__item.slider-buttons__item--slide--prev 
+                button.slider-buttons__item.slider-buttons__item--slide--next
+
+        .works__right
+          .works__tags
+            - var tags = ['html', 'css', 'javascript']
+            each tag in tags
+              ul.tags
+                li.tags__item #{tag}
+          .works__text
+            h3.works__title Сайт школы образования
+            .works__desc-text
+              p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+            a.iconed-link
+              .iconed-link__icon
+                +icon('link', 'iconed-link__icon-chain')
+              .iconed-link__text Посмотреть сайт
+
+        .triangles
+          svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(points="0,0 0,100 1000,100")
+          svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(points="0,100 1000,100 1000,0")
+        
+      section.reviews
+        .container
+          .slider
+            .slider__head
+              h2.section-title__reviews Что обо мне говорят
+              .arrow
+                a.arrow__left
+                  +icon('arrow-down', 'arrow__left-icon')
+                a.arrow__right
+                  +icon('arrow-down', 'arrow__right-icon')
+            .slider__wrap
+              ul.slider__list
+                li.slider__item
+                  .slider__top
+                    .slider__quote
+                      +icon('quote', 'slider__quote-icon')
+                    .slider__quotation Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4.5 месяца только самых тяжелых испытаний и бессонных ночей!
+                  .slider__bottom
+                    .avatar.slider__img
+                      +image('content/kovalchukd.jpg', 'avatar__pic')
+                    .slider__name
+                      p.slider__name-img Ковальчук Дмитрий
+                      p.slider__name-title Основатель Loftschool
+                li.slider__item
+                  .slider__top
+                    .slider__quote
+                      +icon('quote', 'slider__quote-icon')
+                    .slider__quotation Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                  .slider__bottom
+                    .avatar.slider__img
+                      +image('content/sabantsevv.jpg', 'avatar__pic')
+                    .slider__name
+                      p.slider__name-img Владимир Сабанцев
+                      p.slider__name-title Преподаватель
+
+          .form
+            .container.form__container
+              h2.section-title__form Связаться со мной
+              form.form__element
+                .form__content
+                  .form__row
+                    label.form__block
+                      .form__elem-title Введите ваше имя
+                        .input
+                          .input__icon
+                            +icon('user', 'user-icon')
+                          input(type="text").form__input
+                    label.form__block
+                      .form__elem-title Введите ваш email
+                        .input
+                          .input__icon
+                            +icon('envelope', 'envelope-icon')
+                          input(type="email").form__input
+                  .form__row
+                    label.form__block
+                      .form__elem-title Сообщение к письму
+                        .input
+                          .input__icon
+                            +icon('message', 'message-icon')
+                          textarea.form__input.form__input--textarea
+                  .form__buttons-row
+                    .form__buttons
+                      button.btn Отправить
+
+      footer.footer
+        .container.footer__container
+          .footer__left
+            .copyright &copy;2019
+            .user-info__footer
+              .user-info__username-footer Игорь<br>Немгиров
+              h3.user-info__desc-footer Личный сайт<br>веб разработчика
+          .footer__right
+            .footer__right-top
+                nav.nav
+                  - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
+                  ul.nav__list
+                    each item in menu
+                      li.nav__item-footer
+                        a(href='').nav__link-footer #{item}
+            .footer__right-bottom
+              .footer__right-bottom-left
+                p.footer-text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
+                .footer__socials
+                  - var icons = ['insta', 'vk', 'github']
+                  ul.socials
+                    each item, index in icons
+                      li.socials__item-footer(class=`${index === 1 ? 'active' : ''}`)
+                        a(href='#').socials__link-footer
+                          +icon(`${item}`, 'socials__icon-footer')
+              .footer__right-bottom-right
+                p.footer-text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                p.footer-text-author Martin Golding
+
+
+
+
+

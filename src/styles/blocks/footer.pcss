@@ -1,0 +1,126 @@
+.footer {
+    background-color: #252830;
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 100px 0;
+}
+
+.footer__left {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.copyright {
+    @include sans(semibold);
+    color: #494b50;
+    font-size: 48px;
+}
+
+.user-info__footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.user-info__desc-footer {
+    @include sans(semibold);
+    color: #494b50;
+    font-size: 16px;
+}
+
+.user-info__username-footer {
+    @include sans(bold);
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.footer__right {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer__right-top {
+    display: flex;
+    margin-bottom: 35px;;
+}
+
+.nav__item-footer {
+    margin-right: 30px;
+  
+    &:last-child {
+      margin-right: 0;
+    }
+}
+
+.nav__link-footer {
+    text-decoration: none;
+    @include sans(medium);
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.footer__right-bottom {
+    display: flex;
+}
+
+.socials__item-footer {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #494b50;
+    margin-left: 20px;
+    position: relative;
+    &:first-child {
+        margin-left: 0;
+      }
+
+}
+
+.socials__link-footer {
+	display: inline-block;
+	max-width: 20px;
+	max-height: 20px;
+	opacity: .8;
+    transition: .3s;
+    color: #494b50;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.socials__icon-footer {
+	width: 28px;
+	height: 31px;
+    display: block;
+    color: #494b50;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.footer-text {
+    @include sans(semibold);
+    color: #494b50;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.footer-text-author {
+    @include sans(semibold);
+    color: #ffffff;
+    font-size: 16px;
+    font-style: italic;
+}

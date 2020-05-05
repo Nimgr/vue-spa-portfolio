@@ -1,0 +1,33 @@
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.user__avatar {
+    margin-bottom: 20px;
+}
+
+.user__desc {
+      display: flex;
+      flex-direction: column;
+}
+
+.user__desc-item {
+      display: flex;
+      @include sans(semibold);
+      color: dark;
+      font-size: 16px;
+}
+
+.user__key {
+    @include sans(semibold);
+    color: lightdark;
+    font-size: 16px;
+}
+
+.user__value {
+      @include sans(bold);
+      color: dark;
+      font-size: 16px;
+}

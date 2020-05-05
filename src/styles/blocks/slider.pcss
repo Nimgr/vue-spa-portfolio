@@ -1,0 +1,103 @@
+.reviews {
+    background: url(../images/content/Buddha.jpg) center center / cover no-repeat;
+    height: 100vh;
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.slider__head {
+    display: flex;
+}
+
+.section-title__reviews {
+    @include sans(bold);
+    color: dark;
+    font-size: 36px;
+    margin-left: 150px;
+}
+
+.arrow {
+    display: flex;
+    margin-left: 50px;
+    width: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.arrow__left {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    transform: rotate(180deg);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.arrow__right {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.arrow__left-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.arrow__right-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.slider__list {
+    display: flex;
+}
+
+.slider__item {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.slider__top {
+    display: flex;
+}
+
+.slider__quote {
+    width: 100px;
+    height: 100px;
+}
+
+.slider__quotation {
+    @include sans(semibold);
+    color: lightdark;
+    font-size: 16px;
+}
+
+.slider__bottom {
+    display: flex;
+}
+
+.slider__img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}

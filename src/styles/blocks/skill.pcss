@@ -1,0 +1,31 @@
+.skill__shape {
+    width: 200px;
+    height: 200px;
+    fill: transparent;
+    stroke: red;
+    stroke-width: 4px;
+}
+
+.skills-row__title {
+    @include sans(bold);
+    font-size: 24px;
+    color: dark;
+}
+
+.skills-row__list {
+    display: flex;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.skill__title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
