@@ -1,17 +1,31 @@
-.section-title {
+.works {
+    display: flex;
+    flex-direction: column;
+}
+
+.works__wrapper {
+    display: flex;
+    margin-left: 20px;
+}
+
+.section-title__works {
     @include sans(bold);
     font-size: 30px;
     color: dark;
+    display: flex;
+    margin-left: 20px;
+    margin-bottom: 100px;
 }
 
 .works__left {
-    width: 60%;
+    width: 70%;
 }
 
 .works__right {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 30%;
+    margin-left: 150px;
 }
 
 .works__tags {
@@ -19,10 +33,19 @@
 }
 
 .tags {
+    position: relative;
+}
+
+.tags__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80px;
-    height: 44px;
-    color: dark;
-    border-radius: 20%;
+    height: 40px;
+    background-color: #aeb0b9;
+    border-radius: 30%;
+    text-align: center;
+    margin-right: 20px;
 }
 
 .works__title {

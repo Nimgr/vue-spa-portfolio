@@ -9,6 +9,7 @@
     @include sans(bold);
     color: dark;
     font-size: 36px;
+    margin-bottom: 100px;
 }
 
 .btn {
@@ -35,6 +36,8 @@
 
 .input {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .input__icon {
@@ -67,11 +70,9 @@
 }
 
 .form__elem-title {
-    margin-bottom: 10px;
-    color: #262424;
-    font-family: "GothamProLight";
-    font-size: 14px;
-    font-weight: 300;
+    @include sans(semibold);
+    color: #494b50;
+    font-size: 16px;
 }
 
 .form__input {
@@ -80,6 +81,11 @@
     width: 100%;
     padding: 12px 9px;
     border-radius: 3px;
+    outline: none;
+    border-bottom: 1px solid #494b50;
+    @include sans(bold);
+    font-size: 18px;
+    color: dark;
 }
 
 .form__input:focus {

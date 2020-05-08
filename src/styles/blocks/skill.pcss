@@ -2,8 +2,23 @@
     width: 200px;
     height: 200px;
     fill: transparent;
-    stroke: red;
+    stroke: #aeb0b9;
     stroke-width: 4px;
+}
+
+.skill__circle {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke-width: 10%;
+    transform-origin: center;
+    stroke: #ff6200;
+    stroke-dasharray: 69 31;
+    stroke-dashoffset: 25;
+}
+
+.skill__circle--position--above {
+    stroke: aqua;
 }
 
 .skills-row__title {
@@ -21,6 +36,9 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    @include sans(bold);
+    color: #aeb0b9;
+    font-size: 18px;
 }
 
 .skill__title {
