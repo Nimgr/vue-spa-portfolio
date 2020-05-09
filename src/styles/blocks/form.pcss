@@ -10,6 +10,9 @@
     color: dark;
     font-size: 36px;
     margin-bottom: 100px;
+    @include tablets {
+        text-align: center;
+    }
 }
 
 .btn {
@@ -43,11 +46,17 @@
 .input__icon {
     width: 30px;
     height: 30px;
+    @include phones {
+        display: none;
+    }
 }
 
 .form__row {
     display: flex;
     margin-bottom: 10px;
+    @include phones {
+        flex-direction: column;
+    }
 }
 
 .form__row:last-child {
@@ -100,6 +109,9 @@
 .form__buttons-row {
     display: flex;
     align-items: center;
+    @include tablets {
+        justify-content: center;
+    }
 }
 
 .form__buttons {

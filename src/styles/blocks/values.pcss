@@ -6,6 +6,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include tablets {
+        flex-direction: column;
+    }
 }
 
 .values__title {
@@ -14,6 +17,18 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
+    @include tablets {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+    @include phones {
+        justify-content: space-evenly;
+        align-items: flex-start;
+        width: 100%;
+    }
+
 }
 
 .values__title-text {
@@ -32,4 +47,7 @@
 
 .values__image {
     width: 40%;
+    @include tablets {
+        width: 100%;
+    }
 }

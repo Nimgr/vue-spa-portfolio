@@ -7,6 +7,9 @@
     justify-content: space-evenly;
     align-items: flex-start;
     padding: 100px 0;
+    @include phones {
+        flex-direction: column;
+    }
 }
 
 .footer__left {
@@ -14,6 +17,12 @@
     width: 30%;
     justify-content: space-around;
     align-items: flex-start;
+    @include desktop {
+        flex-direction: column;
+    }
+    @include phones {
+        width: 100%;
+    }
 }
 
 .copyright {
@@ -48,11 +57,18 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    @include phones {
+        width: 100%;
+    }
+
 }
 
 .footer__right-top {
     display: flex;
-    margin-bottom: 35px;;
+    margin-bottom: 35px;
+    @include tablets {
+        flex-wrap: nowrap;
+    }
 }
 
 .nav__item-footer {
@@ -72,6 +88,9 @@
 
 .footer__right-bottom {
     display: flex;
+    @include tablets {
+        flex-direction: column;
+    }
 }
 
 .socials__item-footer {

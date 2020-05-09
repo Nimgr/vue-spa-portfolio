@@ -23,9 +23,19 @@
     color: dark;
     font-size: 36px;
 }
+
+.hero__links {
+
+    @include tablets {
+        display: none;
+    }
+}
   
 .hero__menu {
     margin: 0 20px;
+    @include phones {
+        display: none;
+    }
 }
   
 .hero__header {
@@ -38,6 +48,16 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.user-info {
+
+    @include desktop {
+        display: flex;
+    }
+    @include tablets {
+        flex-direction: column;
+    }
 }
 
 .user-info__desc {
@@ -59,6 +79,9 @@
     justify-content: center;
     align-items: center;
     padding: 50px 0;
+    @include tablets {
+        display: none;
+    }
 }
 
 .scroll__down-btns {

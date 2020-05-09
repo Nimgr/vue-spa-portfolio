@@ -6,6 +6,12 @@
 .works__wrapper {
     display: flex;
     margin-left: 20px;
+    @include tablets {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 }
 
 .section-title__works {
@@ -19,6 +25,9 @@
 
 .works__left {
     width: 70%;
+    @include tablets {
+        width: 100%;
+    }
 }
 
 .works__right {
@@ -26,6 +35,9 @@
     flex-direction: column;
     width: 30%;
     margin-left: 150px;
+    @include tablets {
+        width: 100%;
+    }
 }
 
 .works__tags {
