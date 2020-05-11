@@ -1,52 +1,38 @@
-.skill__shape {
-    width: 200px;
-    height: 200px;
-    fill: transparent;
-    stroke: #aeb0b9;
-    stroke-width: 4px;
-}
-
-.skill__circle {
-    width: 100%;
-    height: 100%;
-    fill: transparent;
-    stroke-width: 10%;
-    transform-origin: center;
-    stroke: #ff6200;
-    stroke-dasharray: 69 31;
-    stroke-dashoffset: 25;
-}
-
-.skill__circle--position--above {
-    stroke: aqua;
-}
-
-.skills-row__title {
-    @include sans(bold);
-    font-size: 24px;
-    color: dark;
-}
-
-.skills-row__list {
-    display: flex;
-    @include phones {
-        flex-wrap: wrap;
-    }
-}
-
 .skill {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
-    @include sans(bold);
-    color: #aeb0b9;
-    font-size: 18px;
-}
-
-.skill__title {
+    width: 166px;
+    height: 166px;
+  
+    @include tablets {
+      width: 135px;
+      height: 135px;
+    }
+  }
+  
+  .skill__circle {
+    fill: transparent;
+    &_under {
+      stroke: #eaeaea;
+      stroke-width: 5px;
+    }
+    &_above {
+      stroke-width: 12px;
+      stroke-dasharray: 251;
+      stroke-dashoffset: 100;
+    }
+  }
+  
+  .skill__circle-text {
     position: absolute;
-    left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
-}
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 18px;
+    color: rgba($text-color, .5);
+    padding: 14px;
+  
+    @include phones {
+      font-size: 16px;
+    }
+  }

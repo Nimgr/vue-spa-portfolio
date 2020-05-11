@@ -1,119 +1,29 @@
-.form__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: flex-start;
-}
-
-.section-title__form {
-    @include sans(bold);
-    color: dark;
-    font-size: 36px;
-    margin-bottom: 100px;
-    @include tablets {
-        text-align: center;
-    }
-}
-
-.btn {
-    width: 350px;
-    height: 80px;
-    color: #ffffff;
-    text-transform: uppercase;
-    background-color: #4a00ed;
-    border-radius: 30px 5px;
-    border: none;
-}
-
-.btn:hover {
-    background-color: #cb2376;
-    border: none;
-}
-
-.form__elem-title {
-    @include sans(semibold);
-    color: lightdark;
-    font-size: 16px;
-    margin-bottom: 30px;
-}
-
-.input {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.input__icon {
-    width: 30px;
-    height: 30px;
-    @include phones {
-        display: none;
-    }
-}
-
 .form__row {
+    margin-bottom: 38px;
     display: flex;
-    margin-bottom: 10px;
+  
     @include phones {
-        flex-direction: column;
+      flex-direction: column;
+      margin-bottom: 0;
     }
-}
-
-.form__row:last-child {
-    margin-bottom: 0;
-}
-
-.form__row-last {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.form__block {
-    flex: 1;
-    margin-left: 23px;
-}
-
-.form__block:first-child {
-    margin-left: 0;
-}
-
-.form__elem-title {
-    @include sans(semibold);
-    color: #494b50;
-    font-size: 16px;
-}
-
-.form__input {
-    border: 1px solid transparent;
-    background: #ffffff;
-    width: 100%;
-    padding: 12px 9px;
-    border-radius: 3px;
-    outline: none;
-    border-bottom: 1px solid #494b50;
-    @include sans(bold);
-    font-size: 18px;
-    color: dark;
-}
-
-.form__input:focus {
-    outline: none;
-    border: 1px solid #cb2376;
-}
-
-.form__input--textarea {
-    resize: vertical;
-}
-
-.form__buttons-row {
-    display: flex;
-    align-items: center;
-    @include tablets {
-        justify-content: center;
+  
+    &--extra-margin {
+      margin-bottom: 60px;
+    @include phones {
+      flex-direction: column;
+      margin-bottom: 30px;
     }
-}
-
-.form__buttons {
-    border: none;
-}
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .gradient-btn.form__submit {
+    @include phones {
+      width: 100%;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }

@@ -1,96 +1,31 @@
-.welcome-section {
-    background: url(../images/content/Mountain Baloon.jpg) center center / cover no-repeat;
-}
-
 .hero {
-    height: 100vh;
+    padding-top: 54px;
+    position: relative;
 }
-
+  
 .hero__container {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-
-.hero__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hero__logo {
-    @include sans(extrabold);
-    color: dark;
-    font-size: 36px;
-}
-
-.hero__links {
-
-    @include tablets {
-        display: none;
-    }
-}
-  
-.hero__menu {
-    margin: 0 20px;
-    @include phones {
-        display: none;
-    }
-}
-  
-.hero__header {
-    padding-top: 40px;
-}
   
 .hero__content {
-    flex: 1;
+    flex: .8;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-}
-
-.user-info {
-
+    padding: 0 24%;
+  
     @include desktop {
-        display: flex;
+      padding: 0 10%;
     }
-    @include tablets {
-        flex-direction: column;
-    }
-}
-
-.user-info__desc {
-    @include sans(semibold);
-    color: lightdark;
-    font-size: 18px;
-    margin-bottom: 50px;
-}
-
-.user-info__username {
-    @include sans(extrabold);
-    color: dark;
-    font-size: 72px;
-    line-height: 0.9;
 }
   
-.hero__btns {
+  .hero__downbutton {
+    position: absolute;
+    bottom: 4%;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 50px 0;
-    @include tablets {
-        display: none;
-    }
-}
-
-.scroll__down-btns {
-    @include sans(semibold);
-    color: lightdark;
-    font-size: 18px;
-}
-
-.scroll__down-icon {
-    width: 30px;
-    height: 30px;
 }
