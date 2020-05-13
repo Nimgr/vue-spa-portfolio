@@ -1,14 +1,14 @@
 script(type="text/x-template")#slider-container
     .works-slider
-        display(
-            :currentWork="currentWork"
-            :works="works"
-            :currentIndex="currentIndex"
-            @slide="handleSlide"
-    )
-    info(
-      :currentWork="currentWork"
-    )
+      display(
+        :currentWork="currentWork"
+        :works="works"
+        :currentIndex="currentIndex"
+        @slide="handleSlide"
+      )
+      info(
+        :currentWork="currentWork"
+      )
 
 script(type="text/x-template")#slider-display
   .works-slider__pics(:data-slide="currentIndex + 1")
