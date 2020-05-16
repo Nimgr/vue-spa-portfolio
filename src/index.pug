@@ -31,7 +31,7 @@ html(lang="en")
             .container.hero__container
               header.header
                 .header__logo
-                  a.logo(href="") ИН
+                  a(href="").logo ИН
                 .header__menu 
                   nav.nav
                   - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
@@ -46,6 +46,9 @@ html(lang="en")
                       li.socials__item
                         a(href="#").socials__link
                           +icon(item, 'socials__icon')
+                .header__sandwich
+                  a(href="#").sandwich__link
+                    img(src=require("images/content/sandwich.png")).sandwich-img
 
               .hero__content
                 .userinfo
@@ -92,6 +95,8 @@ html(lang="en")
         .middle-section
           section.values
             .container.values__container
+              .values__image
+                img(src=require("images/content/backpack.jpg")).backpack-img
               .values__wrapper
                 .values__title
                   .values__title-container
@@ -119,52 +124,69 @@ html(lang="en")
               .reviews__about
                 h2.section-title__reviews Что обо мне говорят
                 .reviews__arrows
-                  button(@click="previous()").arrow__left
+                  button(@click="previous()" ref="prevBtn").arrow__left
                     +icon('arrow-down', 'arrow-icon')
-                  button(@click="next()").arrow__right
+                  button(@click="next()" ref="nextBtn").arrow__right
                     +icon('arrow-down', 'arrow-icon')
               .reviews__wrapper
                 flickity(ref="flickity" :options="flickityOptions").reviews__list
                   .reviews__item
                     .reviews__content
                       p.reviews__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                    .reviews__author
-                      .reviews__avatar
-                        .avatar-img
-                          +image("content/kovalchuk.jpg", "avatar__pic")
-                      .reviews__author-info
-                        h3.reviews__title Ковальчук Дмитрий
-                        p.reviews__position Основатель Loftschool
+                      .reviews__author
+                        .reviews__avatar
+                          .avatar-img
+                            +image("content/kovalchuk.jpg", "avatar__pic")
+                        .reviews__author-info
+                          h3.reviews__title Ковальчук Дмитрий
+                          p.reviews__position Основатель Loftschool
                   .reviews__item
                     .reviews__content
                       p.reviews__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-                    .reviews__author
-                      .reviews__avatar
-                        .avatar-img
-                          +image("content/sabantsev.jpg", "avatar__pic")
-                      .reviews__author-info
-                        h3.reviews__title Сабанцев Владимир
-                        p.reviews__position Преподаватель
+                      .reviews__author
+                        .reviews__avatar
+                          .avatar-img
+                            +image("content/sabantsev.jpg", "avatar__pic")
+                        .reviews__author-info
+                          h3.reviews__title Сабанцев Владимир
+                          p.reviews__position Преподаватель
                   .reviews__item
                     .reviews__content
                       p.reviews__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                    .reviews__author
-                      .reviews__avatar
-                        .avatar-img
-                          +image("content/kovalchuk.jpg", "avatar__pic")
-                      .reviews__author-info
-                        h3.reviews__title Ковальчук Дмитрий
-                        p.reviews__position Основатель Loftschool
+                      .reviews__author
+                        .reviews__avatar
+                          .avatar-img
+                            +image("content/kovalchuk.jpg", "avatar__pic")
+                        .reviews__author-info
+                          h3.reviews__title Ковальчук Дмитрий
+                          p.reviews__position Основатель Loftschool
                   .reviews__item
                     .reviews__content
                       p.reviews__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-                    .reviews__author
-                      .reviews__avatar
-                        .avatar-img
-                          +image("content/sabantsev.jpg", "avatar__pic")
-                      .reviews__author-info
-                        h3.reviews__title Сабанцев Владимир
-                        p.reviews__position Преподаватель
+                      .reviews__author
+                        .reviews__avatar
+                          .avatar-img
+                            +image("content/sabantsev.jpg", "avatar__pic")
+                        .reviews__author-info
+                          h3.reviews__title Сабанцев Владимир
+                          p.reviews__position Преподаватель
+                  .reviews__item
+                    .reviews__content
+                      p.reviews__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                      .reviews__author
+                        .reviews__avatar
+                          .avatar-img
+                            +image("content/kovalchuk.jpg", "avatar__pic")
+                        .reviews__author-info
+                          h3.reviews__title Ковальчук Дмитрий
+                          p.reviews__position Основатель Loftschool
+                  .reviews__item
+                    .reviews__content
+                      p.reviews__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                      .reviews__author
+                        .reviews__avatar
+                          .avatar-img
+                            +image("content/sabantsev.jpg", "avatar__pic")
 
             .contacts__form
               .form
@@ -221,8 +243,8 @@ html(lang="en")
               .footer__right-bottom-right
                 p.footer-text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                 p.footer-text-author Martin Golding
-
-  include ./templates/entry.pug
+    include ./templates/entry.pug
+  
 
 
 

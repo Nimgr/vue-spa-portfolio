@@ -5,52 +5,36 @@
       margin-bottom: 75px;
     }
 }
-  
+
 .values__container {
-    position: relative;
-    @include tablets {
-      padding-bottom: 350px;
-    }
-    &:before {
-      content: "";
-      position: absolute;
-      background: url('../images/content/backpack.jpg') left bottom / contain no-repeat;
-      display: block;
-      bottom: 5%;
-      height: 100%;
-      width: 100%;
-      left: -5%;
-      @include tablets {
-        bottom: 0;
-        left: 50%;
-        height: 300px;
-        transform: translateX(-50%);
-        background-position: center center;
-      }
-  
-      @include phones {
-        width: 100%;
-      }
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include tablets {
+    flex-direction: column-reverse;
+  }
+}
+
+.values__image {
+  width: 30%;
 }
   
 .values__wrapper {
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
 }
   
 .values__title {
-    margin-bottom: 82px;
-    display: flex;
-    justify-content: center;
+  margin-bottom: 82px;
+  display: flex;
+  justify-content: center;
 }
   
 .values__title-container {
-    width: 38%;
+    width: 60%;
     margin-left: 6%;
-    @include desktop {
-      width: 42%;
-      margin-left: 0;
-    }
+    
     @include tablets {
       width: 68%;
       text-align: center;
@@ -83,7 +67,7 @@
 }
   
 .values__widget-container {
-    width: 66%;
+    width: 75%;
     @include tablets {
       width: 95%;
     }

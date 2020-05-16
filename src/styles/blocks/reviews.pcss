@@ -22,27 +22,34 @@
 
 .reviews__about {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .reviews__arrows {
   display: flex;
   align-items: center;
-  margin-left: 100px;
 }
 
 .section-title__reviews {
   @include sans(bold);
   color: dark;
   font-size: 36px;
+  @include phones {
+    text-align: center;
+  }
 }
 
 .arrow__left {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border: 1px solid #464d62;
   border-radius: 50%;
+  background-color: transparent;
   transform: rotate(180deg);
   align-items: center;
   justify-content: center;
@@ -50,7 +57,7 @@
 }
 
 .arrow-icon {
-  width: 10px;
+  width: 8px;
   height: 10px;
   position: absolute;
   left: 50%;
@@ -59,27 +66,29 @@
 }
 
 .arrow__right {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border: 1px solid #464d62;
   border-radius: 50%;
+  background-color: transparent;
   align-items: center;
   justify-content: center;
   position: relative;
   margin-left: 20px;
 }
 
-.reviews__list {
-  display: flex;
-}
-
 .reviews__item {
-  padding-left: 12%;
   width: 45%;
   margin-left: 5%;
+  @include phones {
+    width: 100%;
+  }
 }
 
 .reviews__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding-left: 24%;
   position: relative;
 
@@ -113,6 +122,20 @@
 
 .reviews__author {
 display: flex;
+}
+
+.reviews__author-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.reviews__title {
+  @include sans(bold);
+  color: dark;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .contacts__form-title {
