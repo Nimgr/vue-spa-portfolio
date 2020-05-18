@@ -191,7 +191,7 @@ html(lang="en")
             .contacts__form
               .form
                 .section-title.contacts__form-title Связаться со мной
-                form.form__elem
+                form.form__elem(@submit.prevent="submit")
                   .form__row
                     - 
                       var fields = [
@@ -203,7 +203,8 @@ html(lang="en")
                         .form-block__container
                           +icon(`${item[0]}`, 'form-block__icon') 
                           .form-block__field
-                            input(type="text" placeholder=item[2]).form-block__input
+                            input(type="text" placeholder=item[2] v-model="user.data").form-block__input
+                            //- .error-box {{ validation.firstError('user.data') }}
                   .form__row.form__row--extra-margin
                     label.form-block(data-title="Сообщение к письму")
                       .form-block__container.form-block__container_align_top
@@ -211,8 +212,9 @@ html(lang="en")
                         .form-block__field
                           textarea(
                             placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса"
-                          ).form-block__input
-                  .from__row
+                            v-model="user.message").form-block__input
+                            //- .error-box {{ validation.firstError('user.mesage') }}
+                  .form__row
                     input(type="submit" value="отправить").gradient-btn.form__submit
 
       footer.footer
