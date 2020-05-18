@@ -1,0 +1,152 @@
+.reviews {
+  background: url('../images/content/Buddha.jpg') center center / cover no-repeat;
+  padding-top: 253px;
+  padding-bottom: 135px;
+
+  @include phones {
+  padding-top: 170px;
+  padding-bottom: 110px;
+  }
+}
+  
+.reviews__container {
+  padding-right: 26%;
+  @include tablets {
+  padding-right: 0;
+  }
+}
+
+.reviews__header {
+  margin-bottom: 50px;
+}
+
+.reviews__about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  @include phones {
+    flex-direction: column;
+  }
+}
+
+.reviews__arrows {
+  display: flex;
+  align-items: center;
+}
+
+.section-title__reviews {
+  @include sans(bold);
+  color: dark;
+  font-size: 36px;
+  @include phones {
+    text-align: center;
+  }
+}
+
+.arrow__left {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #464d62;
+  border-radius: 50%;
+  background-color: transparent;
+  transform: rotate(180deg);
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.arrow-icon {
+  width: 8px;
+  height: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.arrow__right {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #464d62;
+  border-radius: 50%;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 20px;
+}
+
+.reviews__item {
+  width: 45%;
+  margin-left: 5%;
+  @include phones {
+    width: 100%;
+  }
+}
+
+.reviews__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 24%;
+  position: relative;
+
+  @include tablets {
+    padding-left: 0;
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    width: 18%;
+    height: 37%;
+    opacity: .05;
+    background: svg-load('quote.svg', fill=$text-color) center center / contain no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @include tablets {
+      background: none;
+    }
+  }
+}
+
+.reviews__text {
+  margin-bottom: 30px;
+  color: rgba($text-color, .5);
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.reviews__author {
+display: flex;
+}
+
+.reviews__author-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.reviews__title {
+  @include sans(bold);
+  color: dark;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.contacts__form-title {
+  @include phones {
+  text-align: center;
+  }
+}
+
+.contacts__form {
+  width: 89%;
+  @include tablets {
+  width: 100%;
+  }
+}
