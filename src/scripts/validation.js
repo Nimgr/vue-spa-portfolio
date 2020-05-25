@@ -1,6 +1,5 @@
-import Vue from "vue";
+import SimpleVueValidation from "simple-vue-validator";
 
-import SimpleVueValidator from "simple-vue-validator";
 const Validator = SimpleVueValidator.Validator;
 export default {
   mixins: [SimpleVueValidator.mixin],

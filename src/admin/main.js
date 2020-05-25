@@ -1,11 +1,9 @@
 import Vue from 'vue';
-import App from './App.vue';
-import SimpleVueValidation from 'simple-vue-validator';
-import "./default.pcss";
-
-Vue.use(SimpleVueValidation);
+import App from './App.vue'
+import router from './router'
 
 new Vue({
   el: "#app-root",
+  router,
   render: h => h(App)
 });

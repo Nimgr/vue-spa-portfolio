@@ -8,7 +8,8 @@
     "build": "rm -rf dist && webpack --mode=production --progress",
     "reg": "node reg-util.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -57,13 +58,19 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "axios": "^0.19.2",
+    "es6-promise": "^4.2.8",
+    "jest": "^26.0.1",
+    "jshint": "^2.11.1",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
     "pug": "^2.0.3",
     "request": "^2.88.0",
     "signale": "^1.4.0",
+    "simple-vue-validator": "^0.16.0",
     "vue": "^2.6.7",
     "vue-flickity": "^1.2.1",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0"
   }
 }
