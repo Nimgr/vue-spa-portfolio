@@ -2,26 +2,20 @@
   .tabs-container
     .container
       ul.tabs
-        li.tabs__item(v-for="tab in tabs")
-          router-link(
-            :data-text="tab.title" 
-            :to="tab.href"
-            exact-active-class="active"
-          ).tabs__link
+        li.tabs__item
+          router-link-exact-active(to="/").tabs__link Обо мне
+        li.tabs__item
+          router-link-exact-active(to="reviews").tabs__link Отзывы
+        li.tabs__item
+          router-link-exact-active(to="works").tabs__link Работы
+        li.tabs__item
+          router-link-exact-active(to="login").tabs__link Логин
 
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      tabs: [
-        { title: "Обо мне", href: "../pages/about" },
-        { title: "Отзывы", href: "../pages/reviews" },
-        { title: "Работы", href: "../pages/works" }
-      ]
-    };
-  }
+  
 };
 </script>
 

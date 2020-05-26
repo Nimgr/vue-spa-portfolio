@@ -7,14 +7,54 @@
         tabs
       main.content-container
         router-view
+        .about-section
+          .container
+            .about-page__title
+              h1.page-title Блок "Обо мне"
+              button.about-page__add-new(
+              ) Добавить группу
+
+          .about-page__content
+            .container.container--mobile-wide
+              form(@submit.prevent="addNewCategory").categories-form
+                input(type="text" v-model="title")
+                input(type="submit" value="Добавить")
+                .error-box {{ validation.firstError('title')}}
+
+
+        works
+
+        login
+            
         
 </template>
 
 <script>
+  import SimpleVueValidator from 'simple-vue-validator';
+  const Validator = SimpleVueValidator.Validator;
   export default {
+    mixins: [SimpleVueValidator.mixin],
+    validators: {
+      'title': function (value) {
+        return Validator.custom(function () {
+          if (value.length < 3) {
+            return 'Не менее 3 символов'
+          }
+        });
+      }
+    },
+
     components: {
       appHeader: () => import("./components/header"),
-      tabs: () => import("./components/tabs")
+      tabs: () => import("./components/tabs"),
+      works: () => import("./pages/works"),
+      login: () => import("./pages/login"),
+      skillsGroup: () => import("./components/skills-group")
+    },
+    data(){
+      return {
+        title: ''
+      }
     }
   };
 </script>
