@@ -3,7 +3,7 @@
 // const login = { template: '<div>Login</div>'}
 
 export default [
-  // { path: '/', component: () => import('../pages/about.vue') },
+  // { path: '/', component: () => import('../components/pages/about.vue') },
   // { path: '/works', component: Works},
   // { path: '/reviews', component: Reviews},
   // { path: '/login', component: login, meta: { login: true}}

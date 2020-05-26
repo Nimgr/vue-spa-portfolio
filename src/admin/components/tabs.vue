@@ -2,14 +2,10 @@
   .tabs-container
     .container
       ul.tabs
-        li.tabs__item
-          router-link-exact-active(to="/").tabs__link Обо мне
-        li.tabs__item
-          router-link-exact-active(to="reviews").tabs__link Отзывы
-        li.tabs__item
-          router-link-exact-active(to="works").tabs__link Работы
-        li.tabs__item
-          router-link-exact-active(to="login").tabs__link Логин
+        router-link(to="/") Обо мне
+        router-link(to="/reviews").tabs__link Отзывы
+        router-link(to="/works").tabs__link Работы
+        router-link(to="/login").tabs__link Логин
 
 </template>
 

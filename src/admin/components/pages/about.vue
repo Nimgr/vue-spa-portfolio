@@ -8,46 +8,46 @@
 
     .about-page__content
       .container.container--mobile-wide
-        form(@submit.prevent="addNewCategory").categories-form
-          input(type="text" v-model="title")
+        form.categories-form
+          input(type="text")
           input(type="submit" value="Добавить")
 
         ul.skill-list
-          li.skill-list__item(v-for="category in categories" :key="category.id")
-            skills-group(
-              :category="category"
-            )
+          li.skill-list__item
+            //- skills-group(
+            //-   :category="category"
+            //- )
 
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-export default {
-  components: {
-    skillsGroup: () => import("../skills-group")
-  },
-  data: () => ({
-    title: ""
-  }),
-  computed : {
-    ...mapState("categories", {
-      categories: state => state.categories
-    })
-  },
-  created() {
-    this.fetchCategories();
-  },
-  methods: {
-    ...mapActions("categories", ["addCategory", "fetchCategories"]),
-    async addNewCategory() {
-      try {
-        await this.addCategory(this.title);
-      } catch (error) {
-        alert(error.message);
-      }
-    }
-  }
-};
+// import { mapState, mapActions } from "vuex";
+// export default {
+//   components: {
+//     skillsGroup: () => import("../skills-group")
+//   },
+//   data: () => ({
+//     title: ""
+//   }),
+//   computed : {
+//     ...mapState("categories", {
+//       categories: state => state.categories
+//     })
+//   },
+//   created() {
+//     this.fetchCategories();
+//   },
+//   methods: {
+//     ...mapActions("categories", ["addCategory", "fetchCategories"]),
+//     // async addNewCategory() {
+//     //   try {
+//     //     await this.addCategory(this.title);
+//     //   } catch (error) {
+//     //     alert(error.message);
+//     //   }
+//     // }
+//   }
+// };
 </script>
 
 <style lang="postcss" scoped>

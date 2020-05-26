@@ -1,6 +1,8 @@
+import Vue from 'vue';
 import SimpleVueValidator from "simple-vue-validator";
 const Validator = SimpleVueValidator.Validator;
-export default {
+new Vue( {
+  el: "#form",
   mixins: [SimpleVueValidator.mixin],
   validators: {
     "user.data": function(value) {
@@ -41,7 +43,7 @@ export default {
         });
     }
   }
-};
+});
 // export default (() => {
 
 //   let voidСheck = (form) => {
