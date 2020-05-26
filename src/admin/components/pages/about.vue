@@ -24,7 +24,7 @@
 import { mapState, mapActions } from "vuex";
 export default {
   components: {
-    skillsGroup: () => import("../components/skills-group")
+    skillsGroup: () => import("../skills-group")
   },
   data: () => ({
     title: ""
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import "../../styles/mixins.pcss";
+@import "../../../styles/mixins.pcss";
 .skill-container {
   border: 1px solid black;
   padding: 10px;

@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import $axios from "../requests";
+import $axios from "../../requests";
 export default {
   components: {
-    appInput: () => import("../components/input.vue")
+    appInput: () => import("../input.vue")
   },
   data: () => ({
     user: {
@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="postcss">
-@import "../../styles/mixins.pcss";
+@import "../../../styles/mixins.pcss";
 .login {
   position: fixed;
   top: 0;
@@ -62,7 +62,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("../../images/content/admin.jpg") center center / cover no-repeat;
+  background: url("../../../images/content/admin.jpg") center center / cover no-repeat;
   &:before {
     content: "";
     position: absolute;

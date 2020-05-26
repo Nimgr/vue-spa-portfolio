@@ -9,28 +9,28 @@ export default [
   // { path: '/login', component: login, meta: { login: true}}
     {
       path: "/",
-      component: () => import("../pages/about.vue"),
+      component: () => import("../components/pages/about.vue"),
       meta: {
         title: "Блок «Обо мне»"
       }
     },
     {
       path: "/works",
-      component: () => import("../pages/works.vue"),
+      component: () => import("../components/pages/works.vue"),
       meta: {
         title: "Блок «Работы»"
       }
     },
     {
       path: "/reviews",
-      component: () => import("../pages/reviews.vue"),
+      component: () => import("../components/pages/reviews.vue"),
       meta: {
         title: "Блок «Отзывы»"
       }
     },
     {
       path: "/login",
-      component: () => import("../pages/login.vue"),
+      component: () => import("../components/pages/login.vue"),
       meta: {
         login: true
       }

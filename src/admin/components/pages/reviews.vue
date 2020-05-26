@@ -51,14 +51,14 @@
 import { mapState, mapActions } from "vuex";
 export default {
   components: {
-    appInput: () => import("../components/input.vue"),
-    appButton: () => import("../components/button.vue")
+    appInput: () => import("../input.vue"),
+    appButton: () => import("../button.vue")
   }
 };
 </script>
 
 <style lang="postcss" scoped>
-@import "../../styles/mixins.pcss";
+@import "../../../styles/mixins.pcss";
 .card {
   background: #fff;
   box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
