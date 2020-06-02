@@ -3,5 +3,8 @@ mixin icon(name, className)
   svg(class=className viewBox=icon.viewBox preserveAspectRatio="none")
     use(xlink:href=icon.url)
 
+mixin iconPng(name, className)
+  - var icon = require(`images/icons/${name}.png`);
+
 mixin image(path, className)
   img(src=require(`images/${path}`) class=className)

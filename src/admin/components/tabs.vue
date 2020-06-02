@@ -2,16 +2,23 @@
   .tabs-container
     .container
       ul.tabs
-        router-link(to="/") Обо мне
-        router-link(to="/reviews").tabs__link Отзывы
-        router-link(to="/works").tabs__link Работы
-        router-link(to="/login").tabs__link Логин
+        router-link(to="/"  data-text="Обо мне").tabs__link
+        router-link(to="/works" data-text="Работы").tabs__link
+        router-link(to="/reviews" data-text="Отзывы").tabs__link
 
 </template>
 
 <script>
 export default {
-  
+  data() {
+      return {
+        // tabs: [
+        //   { title: "Обо мне", link: "/" },
+        //   { title: "Работы", link: "/works" },
+        //   { title: "Отзывы", link: "/reviews" }
+        // ]
+      };
+    }
 };
 </script>
 

@@ -1,56 +1,62 @@
 <template lang="pug">
-  .about-section
+  .about-page-container
     .container
       .about-page__title
-        h1.page-title Блок "Обо мне"
+        h1.page-title Обо мне
         button.about-page__add-new(
         ) Добавить группу
 
     .about-page__content
       .container.container--mobile-wide
-        form.categories-form
-          input(type="text")
+        form(@submit.prevent="addNewCategory").categories-form
+          input(type="text" v-model="title")
           input(type="submit" value="Добавить")
 
         ul.skill-list
-          li.skill-list__item
-            //- skills-group(
-            //-   :category="category"
-            //- )
+          li.skill-list__item(v-for="category in categories" :key="category.id")
+            skills-group(
+              :category="category"
+            )
+
+      form(@submit.prevent="addNewCategory").categories-form
+        input(type="text" v-model="title")
+        input(type="submit" value="Добавить")
+        .error-box {{ validation.firstError('title')}}
 
 </template>
 
 <script>
-// import { mapState, mapActions } from "vuex";
-// export default {
-//   components: {
-//     skillsGroup: () => import("../skills-group")
-//   },
-//   data: () => ({
-//     title: ""
-//   }),
-//   computed : {
-//     ...mapState("categories", {
-//       categories: state => state.categories
-//     })
-//   },
-//   created() {
-//     this.fetchCategories();
-//   },
-//   methods: {
-//     ...mapActions("categories", ["addCategory", "fetchCategories"]),
-//     // async addNewCategory() {
-//     //   try {
-//     //     await this.addCategory(this.title);
-//     //   } catch (error) {
-//     //     alert(error.message);
-//     //   }
-//     // }
-//   }
-// };
+import { mapActions, mapState } from "vuex";
+export default {
+  components: {
+    skillsGroup: () => import("../skills-group")
+  },
+  data: () => ({
+    title: ""
+  }),
+  computed : {
+    ...mapState("categories", {
+      categories: state => state.categories
+    })
+  },
+  created() {
+    this.fetchCategories();
+  },
+  methods: {
+    ...mapActions("categories", ["addCategory", "fetchCategories"]),
+    async addNewCategory() {
+      try {
+        await this.addCategory(this.title);
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+  }
+};
 </script>
 
 <style lang="postcss" scoped>
+@import "../../../styles/mixins.pcss";
 @import "../../../styles/mixins.pcss";
 .skill-container {
   border: 1px solid black;

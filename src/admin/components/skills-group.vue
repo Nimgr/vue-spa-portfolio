@@ -1,26 +1,25 @@
 <template lang="pug">
-  .skills-group-section
-    .skill-container
-      h2 {{category.category}}
-      hr
-      table
-        skill-item(
-          v-for="skill in category.skills"
-          :key="skill.id"
-          :skill="skill"
-        )
-      hr
-      form(
-        @submit.prevent="addNewSkill"
-        :class={blocked: loading}
-      ).add-skill-wrapper
-        input(type="text" placeholder="Name" v-model="skill.title")
-        input(type="text" placeholder="Percent" v-model="skill.percent")
-        input(type="file" @change="handleFile")
-        button(
-          type="submit"
-          :disabled="loading"
-        ) Добавить
+  .skill-container
+    h2 {{category.category}}
+    hr
+    table
+      skill-item(
+        v-for="skill in category.skills"
+        :key="skill.id"
+        :skill="skill"
+      )
+    hr
+    form(
+      @submit.prevent="addNewSkill"
+      :class={blocked: loading}
+    ).add-skill-wrapper
+      input(type="text" placeholder="Name" v-model="skill.title")
+      input(type="text" placeholder="Percent" v-model="skill.percent")
+      input(type="file" @change="handleFile")
+      button(
+        type="submit"
+        :disabled="loading"
+      ) Добавить
 </template>
 <script>
 import { mapActions } from "vuex";

@@ -59,6 +59,7 @@
   ],
   "dependencies": {
     "axios": "^0.19.2",
+    "babel-polyfill": "^6.26.0",
     "es6-promise": "^4.2.8",
     "jest": "^26.0.1",
     "jshint": "^2.11.1",

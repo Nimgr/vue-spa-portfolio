@@ -6,6 +6,8 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    //link(rel="shortcut icon", href="./images/content/favicon.ico", type="image/x-icon")
+    link(rel="icon", href="./images/content/favicon.ico", type="image/x-icon")
     script(src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js")
     title Portfolio | main page
   body
@@ -191,20 +193,20 @@ html(lang="en")
             .contacts__form
               .form#form
                 .section-title.contacts__form-title Связаться со мной
-                form.form__elem(@submit.prevent="submit")
+                form(v-on:submit.prevent="submit").form__elem
                   .form__row
-                    - 
-                      var fields = [
-                        ['user', 'Введите ваше имя', 'Ковальчук Дмитрий'],
-                        ['envelope', 'Введите ваш email', 'loftschool@study.com'],
-                      ]
-                    each item in fields
-                      label.form-block(data-title=item[1])
-                        .form-block__container
-                          +icon(`${item[0]}`, 'form-block__icon') 
-                          .form-block__field
-                            input(type="text" placeholder=item[2] v-model="user.data").form-block__input
-                            .error-box {{ validation.firstError('user.data') }}
+                    label.form-block(data-title="Введите ваше имя")
+                      .form-block__container
+                        +icon('user', 'form-block__icon') 
+                        .form-block__field
+                          input(type="text" placeholder="Ковальчук Дмитрий" v-model="user.data").form-block__input
+                          .error-box {{ validation.firstError('user.data') }}
+                    label.form-block(data-title="Введите ваш email")
+                      .form-block__container
+                        +icon('envelope', 'form-block__icon') 
+                        .form-block__field
+                          input(type="email" placeholder="loftschool@study.com" v-model="user.email").form-block__input
+                          .error-box {{ validation.firstError('user.email') }}
                   .form__row.form__row--extra-margin
                     label.form-block(data-title="Сообщение к письму")
                       .form-block__container.form-block__container_align_top
@@ -213,7 +215,7 @@ html(lang="en")
                           textarea(
                             placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса"
                             v-model="user.message").form-block__input
-                            .error-box {{ validation.firstError('user.mesage') }}
+                            .error-box {{ validation.firstError('user.message') }}
                   .form__row
                     input(type="submit" value="отправить").gradient-btn.form__submit
 

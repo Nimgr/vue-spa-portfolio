@@ -12,6 +12,13 @@ new Vue( {
         }
       });
     },
+    "user.email": function(value) {
+      return Validator.custom(function() {
+        if (value.length < 3) {
+          return "Не менее 3 символов";
+        }
+      });
+    },
     "user.message": function(value) {
       return Validator.custom(function() {
         if (value.length < 3) {
@@ -24,6 +31,7 @@ new Vue( {
     return {
       user: {
         data: '',
+        email: '',
         message: ''
       }
     }
