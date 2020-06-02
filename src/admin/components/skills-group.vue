@@ -38,34 +38,34 @@ export default {
       }
     };
   },
-  props: {
-    category: {
-      type: Object,
-      default: () => {},
-      required: true
-    }
-  },
-  methods: {
-    handleFile(e) {
-      const file = e.target.files[0];
-      this.file = file;
-      const formData = new FormData();
-      formData.append("photo", this.file);
-    },
-    ...mapActions("skills", ["addSkill"]),
-    async addNewSkill() {
-      this.loading = true;
-      try {
-        await this.addSkill(this.skill);
-        this.skill.title = "";
-        this.skill.percent = "";
-      } catch (error) {
-        // handling error
-      } finally {
-        this.loading = false;
-      }
-    }
-  }
+  // props: {
+  //   category: {
+  //     type: Object,
+  //     default: () => {},
+  //     required: true
+  //   }
+  // },
+  // methods: {
+  //   handleFile(e) {
+  //     const file = e.target.files[0];
+  //     this.file = file;
+  //     const formData = new FormData();
+  //     formData.append("photo", this.file);
+  //   },
+  //   ...mapActions("skills", ["addSkill"]),
+  //   async addNewSkill() {
+  //     this.loading = true;
+  //     try {
+  //       await this.addSkill(this.skill);
+  //       this.skill.title = "";
+  //       this.skill.percent = "";
+  //     } catch (error) {
+  //       // handling error
+  //     } finally {
+  //       this.loading = false;
+  //     }
+  //   }
+  // }
 };
 </script>
 

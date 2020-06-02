@@ -34,24 +34,24 @@ export default {
   data: () => ({
     title: ""
   }),
-  computed : {
-    ...mapState("categories", {
-      categories: state => state.categories
-    })
-  },
-  created() {
-    this.fetchCategories();
-  },
-  methods: {
-    ...mapActions("categories", ["addCategory", "fetchCategories"]),
-    async addNewCategory() {
-      try {
-        await this.addCategory(this.title);
-      } catch (error) {
-        alert(error.message);
-      }
-    }
-  }
+  // computed : {
+  //   ...mapState("categories", {
+  //     categories: state => state.categories
+  //   })
+  // },
+  // created() {
+  //   this.fetchCategories();
+  // },
+  // methods: {
+  //   ...mapActions("categories", ["addCategory", "fetchCategories"]),
+  //   async addNewCategory() {
+  //     try {
+  //       await this.addCategory(this.title);
+  //     } catch (error) {
+  //       alert(error.message);
+  //     }
+  //   }
+  // }
 };
 </script>
 

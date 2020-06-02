@@ -1,18 +1,18 @@
 <template lang="pug">
   .login-section
     .login__content
-      form(@submit.prevent="submit").login-form
+      form.login-form
         .login-form__title Авторизация
         .login__row
           label.input
             .input__title 
             input(v-model="user.name" placeholder="login" type="text").input__elem.field__elem
-            .error-box {{ validation.firstError('user.name') }}
+            //- .error-box {{ validation.firstError('user.name') }}
         .login__row
           label.input
             .input__title 
             input(v-model="user.password" placeholder="password" type="password").input__elem.field__elem
-            .error-box {{ validation.firstError('user.password') }}
+            //- .error-box {{ validation.firstError('user.password') }}
         .login__btn
           button(
             type="submit"

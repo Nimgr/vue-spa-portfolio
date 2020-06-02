@@ -51,10 +51,10 @@ export default {
     }
   },
   actions: {
-    async addCategory({ commit }, title) {
+     addCategory({ commit }, title) {
       try {
-        const { data } = await this.$axios.post("/categories", { title });
-        commit("ADD_CATEGORY", data);
+        this.$axios.post("/categories", { title })
+        .then(function({data}) {commit("ADD_CATEGORY", data)});
       } catch (error) {
         throw new Error(
           error.response.data.error || error.response.data.message

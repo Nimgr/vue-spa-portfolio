@@ -52,9 +52,9 @@ export default {
 .header-container {
   background: linear-gradient(to right, #3e3e59, #454573);
   padding: 15px 0;
-  @include phones {
+  /* @include phones {
     padding: 20px 0;
-  }
+  } */
 }
 .root-container {
   display: flex;
@@ -76,9 +76,9 @@ export default {
   background: url("../images/content/admin.jpg") center center no-repeat / cover;
   flex: 1;
   padding-top: 60px;
-    @include phones {
+    /* @include phones {
       padding-top: 30px;
-    }
+    } */
 }
 .page-title {
   margin-bottom: 60px;
