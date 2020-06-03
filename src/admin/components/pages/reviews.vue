@@ -75,28 +75,28 @@ export default {
       }
     };
   },
-  // methods: {
-  //   ...mapActions("categories", ["addReview"]),
-  //   handleFile(e) {
-  //     const file = e.target.files[0];
-  //     this.review.photo = file;
-  //     this.renderImageFile(file);
-  //   },
-  //   send() {
-  //     this.addReview(this.review); 
-  //   },
-  //   renderImageFile(file) {
-  //     const reader = new FileReader();
-  //     try {
-  //       reader.readAsDataURL(file);
-  //       reader.onloadend = () => {
-  //         this.renderedPhoto = reader.result;
-  //       };
-  //     } catch (error) {
-  //       throw new Errow("Ошибка при чтении файла");
-  //     }
-  //   }
-  // }
+  methods: {
+    ...mapActions("categories", ["addReview"]),
+    handleFile(e) {
+      const file = e.target.files[0];
+      this.review.photo = file;
+      this.renderImageFile(file);
+    },
+    send() {
+      this.addReview(this.review); 
+    },
+    renderImageFile(file) {
+      const reader = new FileReader();
+      try {
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          this.renderedPhoto = reader.result;
+        };
+      } catch (error) {
+        throw new Errow("Ошибка при чтении файла");
+      }
+    }
+  }
 };
 </script>
 

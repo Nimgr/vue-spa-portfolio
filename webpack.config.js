@@ -9,7 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isProductionBuild = argv.mode === "production";
-  const publicPath = 'https://nimgr.github.io/spa/dist/';
+  const publicPath = '/';
 
   const pcss = {
     test: /\.(p|post|)css$/,
@@ -31,7 +31,7 @@ module.exports = (env, argv) => {
     exclude: /node_modules/,
     options: {
       presets: ['@babel/preset-env'],
-      plugins: ["@babel/plugin-syntax-dynamic-import"]
+      plugins: ["@babel/plugin-syntax-dynamic-import", "@babel/transform-runtime"]
     }
   };
 

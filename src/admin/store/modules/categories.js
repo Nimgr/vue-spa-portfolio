@@ -3,7 +3,19 @@ export default {
   state: {
     categories: []
   },
-  mutations: {
+  mutations: {},
+  actions: {
+    // addCategory({ commit }, title) {
+  //     try {
+  //       this.$axios.post("/categories", { title })
+  //       .then(function({data}) {commit("ADD_CATEGORY", data)});
+  //     } catch (error) {
+  //       throw new Error
+  //         (error.response.data.error || error.response.data.message
+  //       );
+  //     }
+  //   }
+  // }
     SET_CATEGORIES: (state, data) => (state.categories = data),
     ADD_CATEGORY: (state, category) => state.categories.push(category),
     ADD_SKILL: (state, newSkill) => {

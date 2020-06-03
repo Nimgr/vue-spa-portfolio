@@ -1,18 +1,25 @@
 <template lang="pug">
   .login-section
     .login__content
-      form.login-form
+      form(@submit.prevent="submit").login-form
         .login-form__title Авторизация
         .login__row
-          label.input
-            .input__title 
-            input(v-model="user.name" placeholder="login" type="text").input__elem.field__elem
-            //- .error-box {{ validation.firstError('user.name') }}
+          app-input(
+            title="Логин"
+            icon="user"
+            v-model="user.name"
+          )
+            //- .input__title 
+            //- input(v-model="user.name" placeholder="login" type="text").input__elem.field__elem
         .login__row
-          label.input
-            .input__title 
-            input(v-model="user.password" placeholder="password" type="password").input__elem.field__elem
-            //- .error-box {{ validation.firstError('user.password') }}
+          app-input(
+            title="Пароль"
+            icon="key"
+            type="password"
+            v-model="user.password"
+          )
+            //- .input__title 
+            //- input(v-model="user.password" placeholder="password" type="password").input__elem.field__elem
         .login__btn
           button(
             type="submit"
@@ -23,23 +30,10 @@
 import axios from '../../requests';
 import SimpleVueValidator from "simple-vue-validator";
 const Validator = SimpleVueValidator.Validator;
+
 export default {
-  mixins: [SimpleVueValidator.mixin],
-  validators: {
-    "user.name": function(value) {
-      return Validator.custom(function() {
-        if (value.length < 3) {
-          return "Не менее 3 символов";
-        }
-      });
-    },
-    "user.password": function(value) {
-      return Validator.custom(function() {
-        if (value.length < 3) {
-          return "Не менее 3 символов";
-        }
-      });
-    }
+  components: {
+    appInput: () => import("../input.vue")
   },
   data() {
     return {
@@ -49,12 +43,31 @@ export default {
       }
     }
   },
+  // methods: {
+  //   async loginUser() {
+  //     try {
+  //       const response = await $axios.post("/login", this.user);
+  //       const token = response.data.token;
+  //       localStorage.setItem('token', token);
+  //       console.log(response);
+  //       $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+
+  //       this.$router.replace("/");
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // }
   methods: {
     submit() {
       this.$validate()
-        .then(function(success) {
+        .then((success)=> {
           if (success) {
-            alert("Успешно!");
+            axios.post('/login', this.user).then(({data}) =>{
+            localStorage.setItem('token', data.token);
+            axios.defaults.headers["Authorization"] = `Bearer ${data.token}`;
+            this.$router.replace('/');
+      })
           } else {
             alert("Ошибка!");
           }
@@ -63,25 +76,13 @@ export default {
           console.log(err);
         })
     },
-    login() {
-      axios.post('/login', this.user).then(({data}) =>{
-        localStorage.setItem('token', data.token);
-        axios.defaults.headers["Authorization"] = `Bearer ${data.token}`;
-        this.$router.replace('/');
-      })
-    // async login() {
-    //   try {
-    //     const response = await $axios.post("/login",  this.user); 
-    //     const token = response.data.token;
-    //     localStorage.setItem("token", token);
-    //     $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
-    //     this.$router.replace("/");
-        
-    //   } catch (error) {
-        
-    //   }
+    // login() {
+    //   axios.post('/login', this.user).then(({data}) =>{
+    //     localStorage.setItem('token', data.token);
+    //     axios.defaults.headers["Authorization"] = `Bearer ${data.token}`;
+    //     this.$router.replace('/');
+    //   })
     // }
-    }
   }
 }
 </script>

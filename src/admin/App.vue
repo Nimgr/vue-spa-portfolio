@@ -1,30 +1,35 @@
 <template lang="pug">
   div.root-wrapper-container
     div.root-container
-      header.header-container
-        app-header
-      section.tabs-container
-        tabs
-      main.content-container
-        router-view
+      template(v-if="$route.meta.login")
+        .login
+          router-view
+      template(v-else)
+        .admin
+          header.header-container
+            app-header
+          section.tabs-container
+            tabs
+          main.content-container
+            router-view
         
 </template>
 
 <script>
 import { mapState, mapActions, mapGetters } from "vuex";
-import SimpleVueValidator from 'simple-vue-validator';
-const Validator = SimpleVueValidator.Validator;
+// import SimpleVueValidator from 'simple-vue-validator';
+// const Validator = SimpleVueValidator.Validator;
 export default {
-  mixins: [SimpleVueValidator.mixin],
-  validators: {
-    'title': function (value) {
-      return Validator.custom(function () {
-        if (value.length < 3) {
-          return 'Не менее 3 символов'
-        }
-      });
-    }
-  },
+  // mixins: [SimpleVueValidator.mixin],
+  // validators: {
+  //   'title': function (value) {
+  //     return Validator.custom(function () {
+  //       if (value.length < 3) {
+  //         return 'Не менее 3 символов'
+  //       }
+  //     });
+  //   }
+  // },
 
   components: {
     appHeader: () => import("./components/header"),

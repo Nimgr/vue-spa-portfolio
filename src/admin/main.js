@@ -2,10 +2,10 @@ import Vue from 'vue';
 import App from './App.vue';
 import SimpleVueValidation from 'simple-vue-validator';
 import router from './router';
-import $axios from './requests';
+import axios from './requests';
 import store from "./store";
 
-store.$axios = $axios;
+// store.$axios = $axios;
 
 Vue.use(SimpleVueValidation);
 

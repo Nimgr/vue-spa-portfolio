@@ -5,35 +5,48 @@
         h1.page-title Обо мне
         button.about-page__add-new(
         ) Добавить группу
+        //button(@click="login()") Login
+        //button(@click="createCat()") Create Cat
 
     .about-page__content
       .container.container--mobile-wide
-        form(@submit.prevent="addNewCategory").categories-form
-          input(type="text" v-model="title")
-          input(type="submit" value="Добавить")
+        form(@submit.prevent="createNewCategory").categories-form
+          input(type="text" v-model="category.title")
+          input(type="submit" value="Отправить")
 
         ul.skill-list
-          li.skill-list__item(v-for="category in categories" :key="category.id")
-            skills-group(
-              :category="category"
-            )
-
-      form(@submit.prevent="addNewCategory").categories-form
-        input(type="text" v-model="title")
-        input(type="submit" value="Добавить")
-        .error-box {{ validation.firstError('title')}}
+          li.skill-list__item()
+            //- skills-group(
+            //-   :category="category"
+            //- )
 
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions } from "vuex";
+// import SimpleVueValidator from "simple-vue-validator";
+// const Validator = SimpleVueValidator.Validator;
 export default {
-  components: {
-    skillsGroup: () => import("../skills-group")
+  // mixins: [SimpleVueValidator.mixin],
+  // validators: {
+  //   "title": function(value) {
+  //     return Validator.custom(function() {
+  //       if (value.length < 3) {
+  //         return "Не менее 3 символов";
+  //       }
+  //     });
+  //   },
+  // },
+  // components: {
+  //   skillsGroup: () => import("../skills-group")
+  // },
+  data(){
+    return {
+      category: {
+        title: ""
+      }
+    }
   },
-  data: () => ({
-    title: ""
-  }),
   // computed : {
   //   ...mapState("categories", {
   //     categories: state => state.categories
@@ -42,21 +55,30 @@ export default {
   // created() {
   //   this.fetchCategories();
   // },
-  // methods: {
-  //   ...mapActions("categories", ["addCategory", "fetchCategories"]),
-  //   async addNewCategory() {
-  //     try {
-  //       await this.addCategory(this.title);
-  //     } catch (error) {
-  //       alert(error.message);
-  //     }
-  //   }
-  // }
+  methods: {
+    ...mapActions("categories", ["addCategory"]),
+    async createNewCategory() {
+      try {
+        await this.addCategory(this.category.title);
+        this.category.title = "";
+      } catch (error) {
+        alert(error.message);
+      }
+      
+    }
+    // ...mapActions("categories", ["addCategory", "fetchCategories"]),
+    // async addNewCategory() {
+    //   try {
+    //     await this.addCategory(this.title);
+    //   } catch (error) {
+    //     alert(error.message);
+    //   }
+    // }
+  }
 };
 </script>
 
 <style lang="postcss" scoped>
-@import "../../../styles/mixins.pcss";
 @import "../../../styles/mixins.pcss";
 .skill-container {
   border: 1px solid black;

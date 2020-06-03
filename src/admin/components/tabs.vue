@@ -12,11 +12,11 @@
 export default {
   data() {
       return {
-        // tabs: [
-        //   { title: "Обо мне", link: "/" },
-        //   { title: "Работы", link: "/works" },
-        //   { title: "Отзывы", link: "/reviews" }
-        // ]
+        tabs: [
+          { title: "Обо мне", link: "/" },
+          { title: "Работы", link: "/works" },
+          { title: "Отзывы", link: "/reviews" }
+        ]
       };
     }
 };
