@@ -1,9 +1,19 @@
 {
-  "text-color": "#414c63",
-  "links-color": "#4b6fd7",
-  "errors-color": "#cd1515",
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
-  "bp-phones": "480px"
+  "bp-phones": "480px",
+  "text-color": "#414c63",
+  "links-color": "#4b6fd7",
+  "text-color-pale": "#939ca5",
+  "light-gray-color": "#63656c",
+  "orange-color": "#f29400",
+  "navy-blue-color": "#2d3c4e",
+  "violet-color": "#5500f2",
+  "dark-gery-color": "#1f232d",
+  "year-color": "#363942",
+  "errors-color": "#cd1515",
+  "green": "#00d70a",
+  "red": "#bf2929",
+  "blue": "#383bcf"  
 }

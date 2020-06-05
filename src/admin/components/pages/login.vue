@@ -1,7 +1,7 @@
 <template lang="pug">
   .login-section
     .login__content
-      form(@submit.prevent="submit").login-form
+      form(@submit.prevent="login").login-form
         .login-form__title Авторизация
         .login__row
           app-input(
@@ -24,67 +24,54 @@
           button(
             type="submit"
           ).login__send-data Отправить
+
+
 </template>
 
 <script>
-import axios from '../../requests';
-import SimpleVueValidator from "simple-vue-validator";
-const Validator = SimpleVueValidator.Validator;
+  import axios from "../../requests";
+  import SimpleVueValidator from "simple-vue-validator";
+  const Validator = SimpleVueValidator.Validator;
+  import { setToken, setAuthHttpHeaderToAxios } from "../../helpers/token.js";
 
 export default {
-  components: {
-    appInput: () => import("../input.vue")
-  },
   data() {
     return {
       user: {
         name: "nemgirov-270420",
         password: ""
       }
+    };
+  },
+  components: {
+    appInput: () => import("../input.vue")
+  },    
+  validators: {
+    'user.name': function(value) {
+      return Validator.value(value).required();
+    },
+    'user.password': function(value) {
+      return Validator.value(value).required();
     }
   },
-  // methods: {
-  //   async loginUser() {
-  //     try {
-  //       const response = await $axios.post("/login", this.user);
-  //       const token = response.data.token;
-  //       localStorage.setItem('token', token);
-  //       console.log(response);
-  //       $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
-
-  //       this.$router.replace("/");
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // }
   methods: {
-    submit() {
-      this.$validate()
-        .then((success)=> {
-          if (success) {
-            axios.post('/login', this.user).then(({data}) =>{
-            localStorage.setItem('token', data.token);
-            axios.defaults.headers["Authorization"] = `Bearer ${data.token}`;
-            this.$router.replace('/');
-      })
-          } else {
-            alert("Ошибка!");
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        })
-    },
-    // login() {
-    //   axios.post('/login', this.user).then(({data}) =>{
-    //     localStorage.setItem('token', data.token);
-    //     axios.defaults.headers["Authorization"] = `Bearer ${data.token}`;
-    //     this.$router.replace('/');
-    //   })
-    // }
+    async login() {
+      try {
+        const {
+          data: { token }
+        } = await axios.post("/login", this.user);
+
+        localStorage.setItem("token", token);
+        axios.defaults.headers['Authorization'] = `Bearer ${token}`;
+        this.$router.replace('/');
+
+      } catch (error) {
+        console.log(error.response);
+        alert('No registration')
+      }
+    }
   }
-}
+};
 </script>
 
 <style lang="postcss">

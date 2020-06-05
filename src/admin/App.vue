@@ -12,26 +12,32 @@
             tabs
           main.content-container
             router-view
+            //about
+            //reviews
+            //works            
         
 </template>
 
 <script>
 import { mapState, mapActions, mapGetters } from "vuex";
-// import SimpleVueValidator from 'simple-vue-validator';
-// const Validator = SimpleVueValidator.Validator;
+import SimpleVueValidator from 'simple-vue-validator';
+const Validator = SimpleVueValidator.Validator;
 export default {
-  // mixins: [SimpleVueValidator.mixin],
-  // validators: {
-  //   'title': function (value) {
-  //     return Validator.custom(function () {
-  //       if (value.length < 3) {
-  //         return 'Не менее 3 символов'
-  //       }
-  //     });
-  //   }
-  // },
+  mixins: [SimpleVueValidator.mixin],
+  validators: {
+    'title': function (value) {
+      return Validator.custom(function () {
+        if (value.length < 3) {
+          return 'Не менее 3 символов'
+        }
+      });
+    }
+  },
 
   components: {
+    about: () => import("./components/pages/about"),
+    reviews: () => import("./components/pages/reviews"),
+    works: () => import("./components/pages/works"),
     appHeader: () => import("./components/header"),
     tabs: () => import("./components/tabs")
   }

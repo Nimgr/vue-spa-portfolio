@@ -1,6 +1,10 @@
 // const Works = { template: '<div>Works</div>'}
 // const Reviews = { template: '<div>Reviews</div>'}
 // const login = { template: '<div>Login</div>'}
+import about from '../components/pages/about';
+import works from '../components/pages/works';
+import reviews from '../components/pages/reviews';
+import login from '../components/pages/login';
 
 export default [
   // { path: '/', component: () => import('../components/pages/about.vue') },

@@ -1,21 +1,12 @@
+import axios from "axios";
+
+
 export default {
   namespaced: true,
   state: {
     categories: []
   },
-  mutations: {},
-  actions: {
-    // addCategory({ commit }, title) {
-  //     try {
-  //       this.$axios.post("/categories", { title })
-  //       .then(function({data}) {commit("ADD_CATEGORY", data)});
-  //     } catch (error) {
-  //       throw new Error
-  //         (error.response.data.error || error.response.data.message
-  //       );
-  //     }
-  //   }
-  // }
+  mutations: {
     SET_CATEGORIES: (state, data) => (state.categories = data),
     ADD_CATEGORY: (state, category) => state.categories.push(category),
     ADD_SKILL: (state, newSkill) => {
@@ -63,10 +54,10 @@ export default {
     }
   },
   actions: {
-     addCategory({ commit }, title) {
+    async addCategory({ commit }, title) {
       try {
-        this.$axios.post("/categories", { title })
-        .then(function({data}) {commit("ADD_CATEGORY", data)});
+        const { data } = await this.axios.post("/categories", { title });
+        commit("ADD_CATEGORY", data);
       } catch (error) {
         throw new Error(
           error.response.data.error || error.response.data.message
@@ -76,24 +67,10 @@ export default {
 
     async fetchCategories({ commit }) {
       try {
-        const { data } = await this.$axios.get("/categories/1");
+        const { data } = await this.axios.get("/categories/1");
         commit("SET_CATEGORIES", data);
         console.log(data);
       } catch (error) {}
-    },
-
-    async addReview(store, review) {
-      const formData = new FormData();
-
-      Object.keys(review).forEach(key => {
-        const value = review[key];
-        formData.append(key, value);
-      });
-
-      const response = await this.$axios.post('/reviews', formData);
-
-      console.log(response.data);
-      
     }
   }
 };
