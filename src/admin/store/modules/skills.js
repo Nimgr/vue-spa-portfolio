@@ -43,7 +43,7 @@ export default {
     },
     async fetchSkills({commit}) {
       try {
-        const {data: skills} = await this.axios('/skills/160');
+        const {data: skills} = await this.axios('/skills/335');
         //console.log(response.data);
         commit("SET_SKILLS", skills);
       } catch(error) {
