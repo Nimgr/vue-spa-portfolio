@@ -1,5 +1,7 @@
 import { generateStdError } from "../../helpers/errorHandler";
 import { wrapIntoFormData } from "../../helpers/forms";
+import axios from "axios";
+
 
 export default {
   namespaced: true,
@@ -31,7 +33,7 @@ export default {
     async addReview({ commit }, payload) {
       const data = wrapIntoFormData(payload);
       try {
-        const response = await this.$axios.post("/reviews", data);
+        const response = await this.axios.post("/reviews", data);
         commit("ADD_NEW_REVIEW", response.data);
         return response;
       } catch (error) {
@@ -51,7 +53,7 @@ export default {
     async fetchReviews({ commit, rootGetters }) {
       try {
         //const userId = rootGetters['user/userId'];
-        const response = await this.$axios.get(`/reviews/160`);
+        const response = await this.axios.get(`/reviews/335`);
         commit("SET_REVIEWS_STATE", response.data);
         return response;
       } catch (error) {
@@ -60,7 +62,7 @@ export default {
     },
     async removeReview({ commit }, reviewId) {
       try {
-        const response = await this.$axios.delete(`/reviews/${reviewId}`);
+        const response = await this.axios.delete(`/reviews/${reviewId}`);
         commit("REMOVE_REVIEW", reviewId);
         return response;
       } catch (error) {
@@ -70,7 +72,7 @@ export default {
     async updateReview({ commit }, payload) {
       const data = wrapIntoFormData(payload);
       try {
-        const response = await this.$axios.post(`/reviews/${payload.id}`, data);
+        const response = await this.axios.post(`/reviews/${payload.id}`, data);
         commit("EDIT_REVIEW", response.data.review);
         return response;
       } catch (error) {

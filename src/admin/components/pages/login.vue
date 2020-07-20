@@ -1,251 +1,161 @@
 <template lang="pug">
-  .login-section
-    .login__content
-      form(@submit.prevent="submit").login-form
-        .login-form__title Авторизация
-        .login__row
-          app-input(
-            title="Логин"
-            icon="user"
+  .login
+    .container.login__container
+      form(@submit.prevent="login").login__form.login-form
+        h1.login-form__title Авторизация
+        .login-form__field.login-form__field--username
+          label Логин
+          input(
+            type="text"
+            placeholder="Введите имя"
             v-model="user.name"
           )
-            //- .input__title 
-            //- input(v-model="user.name" placeholder="login" type="text").input__elem.field__elem
-        .login__row
-          app-input(
-            title="Пароль"
-            icon="key"
+        .login-form__field.login-form__field--password
+          label Пароль
+          input(
             type="password"
+            placeholder="Введите пароль"
             v-model="user.password"
           )
-            //- .input__title 
-            //- input(v-model="user.password" placeholder="password" type="password").input__elem.field__elem
-        .login__btn
-          button(
-            type="submit"
-          ).login__send-data Отправить
+        button(type="submit").login-form__btn Отправить
+
+
 </template>
 
 <script>
-import axios from '../../requests';
-import SimpleVueValidator from "simple-vue-validator";
-const Validator = SimpleVueValidator.Validator;
+  import $axios from "../../requests";
+  import {Validator} from 'simple-vue-validator'
+  import { setToken, setAuthHttpHeaderToAxios } from "../../helpers/token.js";
 
 export default {
-  components: {
-    appInput: () => import("../input.vue")
-  },
-  data() {
-    return {
-      user: {
-        name: "nemgirov-270420",
-        password: ""
+    data() {
+      return {
+        user: {
+          name: "nemgirov-270420",
+          password: ""
+        }
+      };
+    },
+    validators: {
+      'user.name': function(value) {
+        return Validator.value(value).required();
+      },
+      'user.password': function(value) {
+        return Validator.value(value).required();
+      }
+    },
+    methods: {
+      async login() {
+        try {
+          const {
+            data: { token }
+          } = await $axios.post("/login", this.user);
+
+          localStorage.setItem("token", token);
+          $axios.defaults.headers['Authorization'] = `Bearer ${token}`;
+          this.$router.replace('/');
+
+        } catch (error) {
+          console.log(error.response);
+          alert('No registration')
+        }
       }
     }
-  },
-  // methods: {
-  //   async loginUser() {
-  //     try {
-  //       const response = await $axios.post("/login", this.user);
-  //       const token = response.data.token;
-  //       localStorage.setItem('token', token);
-  //       console.log(response);
-  //       $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
-
-  //       this.$router.replace("/");
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // }
-  methods: {
-    submit() {
-      this.$validate()
-        .then((success)=> {
-          if (success) {
-            axios.post('/login', this.user).then(({data}) =>{
-            localStorage.setItem('token', data.token);
-            axios.defaults.headers["Authorization"] = `Bearer ${data.token}`;
-            this.$router.replace('/');
-      })
-          } else {
-            alert("Ошибка!");
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        })
-    },
-    // login() {
-    //   axios.post('/login', this.user).then(({data}) =>{
-    //     localStorage.setItem('token', data.token);
-    //     axios.defaults.headers["Authorization"] = `Bearer ${data.token}`;
-    //     this.$router.replace('/');
-    //   })
-    // }
-  }
-}
+  };
 </script>
 
 <style lang="postcss">
-@import "../../../styles/mixins.pcss";
-.login {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url("../../../images/content/admin.jpg") center center / cover no-repeat;
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0.5;
-    background: $text-color;
-  }
-}
-.login-form__title {
-  font-size: 36px;
-  text-align: center;
-  font-weight: 600;
-}
-.login__content {
-  position: relative;
-  @include phones {
-    height: 100%;
-    width: 100%;
-  }
-}
-.login__row {
-  margin-bottom: 35px;
-}
-.login__btn {
-  display: flex;
-  width: 100%;
-  padding: 0 8%;
-  justify-content: center;
-}
-.login__send-data {
-  width: 100%;
-  padding: 30px;
-  background-image: linear-gradient(to right, #ad00ed, #5500f2);
-  border-radius: 40px 0 40px;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 18px;
-  &[disabled] {
-    opacity: 0.5;
-    filter: grayscale(100%);
-  }
-}
-.login-form {
-  width: 563px;
-  padding: 50px 77px 60px;
-  background: #fff;
-  @include phones {
-    width: 100%;
-    padding-right: 7%;
-    padding-left: 7%;
-    height: 100%;
+  .login {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-  }
-}
-.input__error-tooltip {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 30%;
-  transform: translateX(-50%);
-  z-index: 100;
-}
-.input {
-  display: block;
-  position: relative;
-  &.no-side-paddings {
-    .input__elem {
-      padding-right: 0;
-      padding-left: 0;
+    align-items: center;
+    height: calc(100% - 100px);
+    
+    @media (max-width: 600px) {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      margin-top: -60px;
     }
-  }
-  &_labeled {
-    .input__elem {
-      padding: 15px 0 18px;
+
+    &__container {
+      display: inline-flex;
+      max-width: 560px;
+      padding: 60px 80px;
+      background: #fff;
+
+      @media (max-width: 600px) {
+        padding: 30px;
+      }
     }
-  }
-  &_iconed {
-    .input__title {
-      margin-left: 45px;
-      margin-bottom: 13px;
+
+    &__form {
+      display: flex;
+      flex-flow: column nowrap;
+      width: 100%;
     }
-    .input__elem {
-      padding-left: 45px;
-      background: left center / auto 29px no-repeat;
-      font-size: 18px;
-      font-weight: bold;
-      padding-top: 17px;
-      padding-bottom: 17px;
-    }
-  }
-  &_icon {
-    @each $icon in (user, key) {
-      &-$(icon) {
-        .input__elem {
-          background-image: svg-load("$(icon).svg", fill=#cfd2d7);
+
+    &-form {
+      &__title {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 1.6;
+        color: $text-color;
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      &__field {
+        display: flex;
+        flex-flow: column nowrap;
+        margin-bottom: 40px;
+
+        &--username {
+          &:before {
+            position: absolute;
+            content: '';
+            width: 26px;
+            height: auto;
+            background: url('../../../images/icons/avatar.svg');
+          }
+        }
+
+        &--password {}
+
+        label {
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 1.8;
+          color: rgba(65, 76, 99, 0.3);
+          padding-left: 45px;
+        }
+
+        input {
+          padding-left: 45px;
+          font-size: 18px;
+          font-weight: bold;
+          line-height: 2.6;
+          color: $text-color;
+          border: none;
+          border-bottom: 1px solid $text-color;
+        }
+      }
+
+      &__btn {
+        padding: 34px 120px 33px;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        background-image: linear-gradient(to right, #ad00ed, #5500f2);
+        border-radius: 50px 0 50px 0;
+        text-transform: uppercase;
+
+        @media (max-width: 600px) {
+          padding: 34px 10px 33px;
+          width: 100%;
         }
       }
     }
   }
-  &.error {
-    @each $icon in (user, key) {
-      &.input_icon-$(icon) {
-        .input__elem {
-          background-image: svg-load("$(icon).svg", fill=$errors-color);
-        }
-      }
-    }
-  }
-}
-.error {
-  .field__elem {
-    border-color: $errors-color;
-  }
-  .input__error-tooltip {
-    display: block;
-  }
-}
-.textarea {
-  position: relative;
-}
-.input__title {
-  color: rgba(65, 76, 99, 0.5);
-  font-weight: 600;
-  opacity: 0.5;
-}
-.textarea__elem {
-  height: 150px;
-  padding: 20px;
-  border: 1px solid rgba($text-color, 0.2);
-  resize: none;
-  font-weight: 600;
-  margin-top: 10px;
-  width: 100%;
-}
-.input__elem {
-  width: 100%;
-  padding: 10px 8%;
-  border: none;
-  border-bottom: 1px solid #1f232d;
-  &::placeholder {
-    color: rgba(55, 62, 66, 0.25);
-  }
-}
 </style>

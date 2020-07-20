@@ -56,6 +56,7 @@ export default {
   justify-content: center;
   border-bottom: 3px solid transparent;
   text-decoration: none;
+  
   @include phones {
     width: 100px;
   }

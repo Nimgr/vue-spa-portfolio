@@ -1,5 +1,7 @@
 import { wrapIntoFormData } from "../../helpers/forms";
 import { generateStdError } from "../../helpers/errorHandler";
+import axios from "axios";
+
 
 export default {
   namespaced: true,
@@ -28,7 +30,7 @@ export default {
     async storeWork({ commit }, payload) {
       const data = wrapIntoFormData(payload);
       try {
-        const response = await this.$axios.post("/works", data);
+        const response = await this.axios.post("/works", data);
         commit("ADD_WORK", response.data);
         return response;
       } catch (error) {
@@ -50,7 +52,7 @@ export default {
     async fetchWorks({ commit, rootGetters }) {
       try {
         const userId = rootGetters['user/userId'];
-        const response = await this.$axios.get(`/works/160`);
+        const response = await this.axios.get(`/works/335`);
         commit("SET_WORKS", response.data);
         return response;
       } catch (error) {
@@ -59,7 +61,7 @@ export default {
     },
     async removeWork({ commit }, workId) {
       try {
-        const response = await this.$axios.delete(`/works/${workId}`);
+        const response = await this.axios.delete(`/works/${workId}`);
         commit("REMOVE_WORK", workId);
         return response;
       } catch (error) {
@@ -69,7 +71,7 @@ export default {
     async updateWork({ commit }, payload) {
       const data = wrapIntoFormData(payload);
       try {
-        const response = await this.$axios.post(`/works/${payload.id}`, data);
+        const response = await this.axios.post(`/works/${payload.id}`, data);
         
         commit("UPDATE_WORK", response.data.work);
         

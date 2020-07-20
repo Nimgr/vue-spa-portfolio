@@ -5,7 +5,7 @@ import router from './router';
 import axios from './requests';
 import store from "./store";
 
-// store.$axios = $axios;
+store.axios = axios;
 
 Vue.use(SimpleVueValidation);
 
