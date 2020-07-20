@@ -1,116 +1,93 @@
 <template lang="pug">
-  form.form
-    input(type="text" placeholder="Login" v-model="user.login")
-    input(type="password" placeholder="password" v-model="user.password")
-    button(type="submit") LogIn
-
-  body
-    .wrapper
-      .maincontent
-        section.about
-          .container.about__container
-            header.header
-              .header__top
-                .about__user
-                  .user__avatar
-                    img(src=require("images/content/Aigor.jpg")).user__avatar-pic
-                  .user__name Игорь Немгиров
-                .adm__panel
-                  h2 Панель администрирования
-                a(href="").quit__btn Выйти
-              .header__bottom
-                .header__menu
-                  nav.nav
-                  - var menu = ['Обо мне', 'Работы', 'Отзывы']
-                  ul.nav__list
-                    each item in menu
-                      li.nav__item
-                        a(href="").nav__link #item
-
-            .about__block
-              .head__part
-                .block__title
-                  h1 Блок "Обо мне"
-                .add__btn
-                  button.add__btn-group
-                  .button__name Добавить группу
-              .about__wrapper
-                .about__groups
-                  ul.groups__list
-                    li.groups__item
-                      tr
-                      tr
-                      tr
-                      tr
-                      tr
-                    li.groups__item
-                      tr
-                    li.groups__item
-                      tr
-
-        section.works
-          container.works__container
-            .works__block
-              .head__part
-                .block__title
-                  h2 Блок "Работы"
-              .works__wrapper
-                .works__collection
-                  .edit__work
-                    h3 Редактирование работы
-                    .edit__content
-                      .edit__content-left
-                      .edit__content-right
-                  .works__preview
-                    .works__add
-                    ul.works__list
-                      li.works__item
-
-        section.reviews
-          container.reviews__container
-            .reviews__block
-              .head__part
-                .block__title
-                  h2 Блок "Отзывы"
-              .reviews__wrapper
-                .reviews__collection
-                  .reviews__new
-                    h3 Новый отзыв
-                    .reviews__content
-                      .reviews__content-left
-                      .reviews__content-right
-                  .reviews__preview
-                    .reviews__add
-                    ul.reviews__list
-                      li.reviews__item
-               
+  div.root-wrapper-container
+    div.root-container
+      template(v-if="$route.meta.login")
+        .login
+          router-view
+      template(v-else)
+        .admin
+          header.header-container
+            app-header
+          section.tabs-container
+            tabs
+          main.content-container
+            router-view
+        
 </template>
 
 <script>
-import SimpleVueValidator from 'simple-vue-validator';
-const Validator = SimpleVueValidator.Validator;
+import { mapState, mapActions, mapGetters } from "vuex";
+// import SimpleVueValidator from 'simple-vue-validator';
+// const Validator = SimpleVueValidator.Validator;
 export default {
-  mixins: [SimpleVueValidator.mixin],
-  validators: {
-    'user.login': function (value) {
-      return Validator.custom(function() {
-        if (value.length < 5) {
-          return 'Не менее 5 символов'
-        }
-      });
-    },
-    'user.password': function (value) {
-      return Validator.custom(function() {
-        if (value.length < 8) {
-          return 'Не менее 8 символов'
-        }
-      });
-    },
+  // mixins: [SimpleVueValidator.mixin],
+  // validators: {
+  //   'title': function (value) {
+  //     return Validator.custom(function () {
+  //       if (value.length < 3) {
+  //         return 'Не менее 3 символов'
+  //       }
+  //     });
+  //   }
+  // },
+
+  components: {
+    appHeader: () => import("./components/header"),
+    tabs: () => import("./components/tabs")
   }
-}
+};
 </script>
 
-<style lang="postcss">
 
+<style lang="pcss">
+  @import "normalize.css";
+  @import "../styles/mixins.pcss";
+  @import "../styles/layout/base.pcss";
+  @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
+
+  button {
+  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+  border-style: solid;
+  border-width: 1px;
+  background-color: buttonface;
+}
+.root-wrapper-container {
+  height: 100%;
+}
+.header-container {
+  background: linear-gradient(to right, #3e3e59, #454573);
+  padding: 15px 0;
+  /* @include phones {
+    padding: 20px 0;
+  } */
+}
+.root-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.admin-wrapper {
+  display: flex;
+}
+
+.maincontent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+.content-container {
+  background: url("../images/content/admin.jpg") center center no-repeat / cover;
+  flex: 1;
+  padding-top: 60px;
+    /* @include phones {
+      padding-top: 30px;
+    } */
+}
+.page-title {
+  margin-bottom: 60px;
+  font-size: 21px;
+  font-weight: bold;
+}
 </style>
-
