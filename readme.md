@@ -6,8 +6,8 @@ Igor Nemgirov, 27.04.2020 - 05.06.2020
 
 ##  Чтобы развернуть проект необходимо:
 ```sh
-$ git clone git@github.com:loftschool/ls-advanced-portfolio.git
-$ cd ls-advanced-portfolio
+$ git clone http://github.com/Nimgr/vue-spa-portfolio clone_new
+$ cd clone_new
 $ yarn
 ```
 
